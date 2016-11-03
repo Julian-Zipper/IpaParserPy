@@ -25,8 +25,8 @@ import os
 import sys
 from setuptools import setup
 
-PACKAGES = ['pyipa']
-SCRIPTS = ['bin/pyipa']
+PACKAGES = ['IpaParserPy']
+SCRIPTS = ['bin/IpaParserPy']
 
 def get_init_val(val, packages=PACKAGES):
     pkg_init = "%s/__init__.py" % PACKAGES[0]

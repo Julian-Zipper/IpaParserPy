@@ -20,49 +20,25 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-import zipfile
-import plistlib
-from .bplist import BPlistReader
+"""
+IpaParserPy
+~~~~~~~~
 
-class IPAparser(object):
-  """docstring for IPAparser"""
+:copyright: (c) 2014 Niko Usai
+:license: see LICENSE for more details.
 
-  def __init__(self, path):
-    self.path = path
-    self.zip_obj = None
+"""
 
-  def findFile(self, fileToFind):
-    for filepath in self.zip_obj.namelist():
-      fname = filepath.split('/')[-1]
-      if fname == fileToFind:
-        return filepath
-    return None
+__title__ = 'IpaParserPy'
+__version__ = '1.0.1'
+__description__ = 'Python module to extract useful info from an IPA'
+__url__ = 'https://github.com/mogui'
+__build__ = 0
+__author__ = 'Niko Usai'
+__author_email__ = 'mogui83@gmail.com'
+__license__ = 'ISC'
+__copyright__ = 'Copyright 2014 Niko Usai'
 
-  def findInfoPlist(self):
-    for filepath in self.zip_obj.namelist():
-      parts = filepath.split('/')
-      if len(parts) > 2 and  parts[2] == 'Info.plist':
-        return filepath
-    return None
 
-  def saveFileTo(self, zipfilepath, newfilename):
-    raw = self.zip_obj.read(zipfilepath)
-    f = open(newfilename, "w")
-    f.write(raw)
-    f.close()
-
-  def parseInfo(self):
-    self.zip_obj = zipfile.ZipFile(self.path, 'r')
-    InfoPath = self.findInfoPlist()
-
-    if not InfoPath:
-      raise Exception("Info.plist not found")
-
-    raw = self.zip_obj.read(InfoPath)
-
-    try:
-      InfoPlist = plistlib.readPlistFromString(raw)
-    except:
-      InfoPlist =  BPlistReader.plistWithString(raw)
-
-    return InfoPlist
+from .IPAparser import IPAparser
+from .bplist import BPlistReader, BPListWriter

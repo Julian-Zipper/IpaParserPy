@@ -22,13 +22,13 @@
 #
 
 
-"""pyipa.
+"""IpaParserPy.
 
 Usage:
-  pyipa [-k --keys=<comma_list>] [-o --out=<json>] [--icons] IPA [FILE]
-  pyipa --all [-o --out=<json>] [--icons] IPA [FILE]
-  pyipa (-h | --help)
-  pyipa --version
+  IpaParserPy [-k --keys=<comma_list>] [-o --out=<json>] [--icons] IPA [FILE]
+  IpaParserPy --all [-o --out=<json>] [--icons] IPA [FILE]
+  IpaParserPy (-h | --help)
+  IpaParserPy --version
 
 Options:
   -k --keys=<comma_list>  Keys to extracts in a comma separated list [default: CFBundleDisplayName,CFBundleIdentifier,CFBundleVersion]
@@ -39,7 +39,7 @@ Options:
   --version               Show version.
 """
 from docopt import docopt
-from pyipa import IPAparser
+from IpaParserPy import IPAparser
 import sys
 import json
 
